@@ -14,8 +14,11 @@ class ModelMyNba {
     }
     featchTeam(team, year) {
         return __awaiter(this, void 0, void 0, function* () {
-            // await $.get(`/players/${year}/${team}`).then((players)=>{
-            yield $.get(`/players/2015/lakers`).then((players) => {
+            const checkbox = document.getElementById('dateOfBirthUtc');
+            let url = `/players/${year}/${team}?filter_date_of_birth_utc=`;
+            url = (checkbox === null || checkbox === void 0 ? void 0 : checkbox.checked) ? url + "true" : url + "false";
+            yield $.get(url).then((players) => {
+                // await $.get(`/players/2017/lakers`).then((players) => {
                 this._team.setPlayers(players);
             });
         });

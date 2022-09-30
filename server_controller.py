@@ -1,12 +1,6 @@
 import requests
 from serverDB import dream_team
-
-teams_id = {
-    "lakers": "1610612747",
-    "warriors": "1610612744",
-    "heat": "1610612748",
-    "suns": "1610612756"
-}
+from Const import statistic_key_filter, teams_id
 
 
 async def filter_players(year, team_name, is_day_of_birth_utc):
@@ -24,6 +18,13 @@ async def filter_players(year, team_name, is_day_of_birth_utc):
                if did_play_in_team_and_year(player.get("teams"), year, team_id)]
 
     return players
+
+
+async def add_statistic(first_name, last_name):
+    statistic = requests.get(
+        f'https://nba-players.herokuapp.com/players-stats/{last_name}/{first_name}')
+    statistic = statistic.json()
+    return {key: val for key, val in statistic.items() if key in statistic_key_filter}
 
 
 def filter_by_day_of_birth_utc(players, is_day_of_birth_utc):

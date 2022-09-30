@@ -14,22 +14,9 @@
   <body>
     <input type="text" id="team_name" placeholder="TEAM NAME" />
     <input type="number" id="year" placeholder="YEAR" />
+    <label> filter by date of birth utc</label>
+    <input type="checkbox" id="dateOfBirthUtc" />
     <button id="get_team_button">GET TEAM</button>
-
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      <div class="col">
-        <div class="card h-100 text-center">
-          <h5 class="card-title">Card title</h5>
-          <h5 class="card-title">Card title</h5>
-          <img
-            src="https://www.socialprintstudio.com/img/products/mini-photo-prints/slider-2/mini-prints-5.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-    </div>
 
     <div id="player-container" class="row row-cols-1 row-cols-md-3 g-4"></div>
 
@@ -56,11 +43,7 @@
             <h5 class="card-title">{{_shirtNumber}}</h5>
             <div>{{this}}</div>
             <div>sadfd</div>
-            <img
-              src={{_img}}
-              class="card-img-top"
-              alt="..."
-            />
+            <img src={{_img}} class="card-img-top" alt="..." />
             <h5 class="card-title">{{_pos}}</h5>
           </div>
         </div>

@@ -24,6 +24,7 @@ app.mount("/static", StaticFiles(directory="./static"), name="static")
 
 @app.get("/")
 def in_load():
+    print("maytan")
     return FileResponse('static/index.html')
 
 
@@ -32,6 +33,11 @@ async def get_players_by_year_and_team(year, team, filter_date_of_birth_utc: boo
     print(filter_date_of_birth_utc)
     players = await server_controller.filter_players(year, team, filter_date_of_birth_utc)
     return players
+
+
+@app.get('/player/statistic/{first_name}/{last_name}')
+async def get_player_statistic(first_name, last_name):
+    return await server_controller.add_statistic(first_name, last_name)
 
 
 @app.get("/teams")
@@ -64,4 +70,4 @@ async def remove_player_from_dream_team(request: Request):
 
 
 if __name__ == "__main__":
-    uvicorn.run("server:app", host="0.0.0.0", port=8080, reload=True)
+    uvicorn.run("server:app", host="0.0.0.0", port=8000, reload=True)
