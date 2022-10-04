@@ -50,5 +50,6 @@ def add_player_to_deram_team(player):
 
 
 def remove_player_from_dream_team(player):
+    global dream_team
     dream_team = [
-        p for p in dream_team if not (player["firstName"] == p["firstName"] and player["lastName"] == p["lastName"])]
+        p for p in dream_team if not (player.get_first_name() == p.get_first_name() and player.get_last_name() == p.get_last_name())]

@@ -1,15 +1,25 @@
 class Player{
-    private _firstName:string
-    private _lastName:string
-    private _shirtNumber:string
-    private _pos:string
-    private _img:string
+    private firstName:string
+    private lastName:string
+    private jersey:string
+    private pos:string
+    private img:string
+    private isInDreanTeam:boolean
 
-    constructor(firstName:string, lastName:string, shirtNumber:string, pos:string){
-        this._firstName = firstName
-        this._lastName = lastName
-        this._shirtNumber = shirtNumber
-        this._pos = pos
-        this._img = `"https://nba-players.herokuapp.com/players/${lastName}/${firstName}"`
+    constructor(firstName:string, lastName:string, jersey:string, pos:string){
+        this.firstName = firstName
+        this.lastName = lastName
+        this.jersey = jersey
+        this.pos = pos
+        this.img = `"https://nba-players.herokuapp.com/players/${lastName}/${firstName}"`
+        this.isInDreanTeam = false
     }
+
+    setIsInDreamTeam(flag: boolean){
+        this.isInDreanTeam = flag
+    }
+
+
+
+
 }

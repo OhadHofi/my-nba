@@ -16,7 +16,12 @@
     <input type="number" id="year" placeholder="YEAR" />
     <label> filter by date of birth utc</label>
     <input type="checkbox" id="dateOfBirthUtc" />
-    <button id="get_team_button">GET TEAM</button>
+    <button id="get_team_button" class="btn btn-primary" type="submit">
+      GET TEAM
+    </button>
+    <button id="get_dream_team_button" class="btn btn-primary" type="submit">
+      Get Dream Team
+    </button>
 
     <div id="player-container" class="row row-cols-1 row-cols-md-3 g-4"></div>
 
@@ -39,12 +44,24 @@
       {{#each players}}
         <div class="col">
           <div class="card h-100 text-center">
-            <h5 class="card-title">{{_firstName}} {{_lastName}}</h5>
-            <h5 class="card-title">{{_shirtNumber}}</h5>
+            <h5 class="card-title first-name">{{firstName}}</h5><h5
+              class="card-title last-name"
+            >{{lastName}}</h5>
+            <h5 class="card-title shirt-number">{{jersey}}</h5>
             <div>{{this}}</div>
-            <div>sadfd</div>
-            <img src={{_img}} class="card-img-top" alt="..." />
-            <h5 class="card-title">{{_pos}}</h5>
+            <img src={{img}} class="card-img-top" alt="..." />
+            <h5 class="card-title pos">{{pos}}</h5>
+            {{#if isInDreanTeam}}
+              <button
+                type="button"
+                class="btn btn-outline-danger remove-from-dream-team"
+              >Remove player from dream team</button>
+            {{else}}
+              <button
+                type="button"
+                class="btn btn-outline-primary add-to-dream-team"
+              >Add player to dream team</button>
+            {{/if}}
           </div>
         </div>
       {{/each}}

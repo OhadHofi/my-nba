@@ -1,10 +1,14 @@
 "use strict";
 class Player {
-    constructor(firstName, lastName, shirtNumber, pos) {
-        this._firstName = firstName;
-        this._lastName = lastName;
-        this._shirtNumber = shirtNumber;
-        this._pos = pos;
-        this._img = `"https://nba-players.herokuapp.com/players/${lastName}/${firstName}"`;
+    constructor(firstName, lastName, jersey, pos) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.jersey = jersey;
+        this.pos = pos;
+        this.img = `"https://nba-players.herokuapp.com/players/${lastName}/${firstName}"`;
+        this.isInDreanTeam = false;
+    }
+    setIsInDreamTeam(flag) {
+        this.isInDreanTeam = flag;
     }
 }

@@ -6,6 +6,7 @@ from fastapi.responses import FileResponse
 import server_controller
 import requests
 from Player import Player
+import json
 
 
 # from pydantic import BaseModel
@@ -24,7 +25,6 @@ app.mount("/static", StaticFiles(directory="./static"), name="static")
 
 @app.get("/")
 def in_load():
-    print("maytan")
     return FileResponse('static/index.html')
 
 
@@ -55,9 +55,8 @@ def get_dream_team():
 
 @app.post('/player/dream/team')
 async def add_player_to_dream_team(request: Request):
-    new_palyer = await request.json()
-    new_palyer = Player(new_palyer)
-    print(new_palyer)
+    new_palyer_string = await request.json()
+    new_palyer = Player(new_palyer_string)
     server_controller.add_player_to_deram_team(new_palyer)
     return "Created"
 
@@ -65,6 +64,7 @@ async def add_player_to_dream_team(request: Request):
 @app.delete('/player/dream/team')
 async def remove_player_from_dream_team(request: Request):
     palyer_to_remove = await request.json()
+    palyer_to_remove = Player(palyer_to_remove)
     server_controller.remove_player_from_dream_team(palyer_to_remove)
     return "Remove"
 

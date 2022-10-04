@@ -11,3 +11,28 @@ $("#get_team_button").on("click", function () {
         viewMyNba.render(modelMyNba.team.players);
     });
 });
+$("body").on("click", ".add-to-dream-team", function () {
+    const player = getPlayerDetails(this);
+    modelMyNba.addPlayerToDreanTeam(player);
+});
+$("body").on("click", ".remove-from-dream-team", function () {
+    const player = getPlayerDetails(this);
+    modelMyNba.removePlayerfromDreanTeam(player).then(() => {
+        modelMyNba.featchDreamTeam().then(() => {
+            viewMyNba.render(modelMyNba.deramTeam.players);
+        });
+    });
+});
+$("#get_dream_team_button").on("click", function () {
+    modelMyNba.featchDreamTeam().then(() => {
+        viewMyNba.render(modelMyNba.deramTeam.players);
+    });
+});
+function getPlayerDetails(refernce) {
+    var card = $(refernce).closest(".card");
+    var firstName = $(card).find(".first-name").text();
+    var lastName = $(card).find(".last-name").text();
+    var shirtNumber = $(card).find(".shirt-number").text();
+    var pos = $(card).find(".pos").text();
+    return new Player(String(firstName), String(lastName), String(shirtNumber), String(pos));
+}

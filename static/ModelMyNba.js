@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 class ModelMyNba {
     constructor() {
         this._team = new Team();
+        this._dreamTeam = new Team();
     }
     featchTeam(team, year) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -20,10 +21,48 @@ class ModelMyNba {
             yield $.get(url).then((players) => {
                 // await $.get(`/players/2017/lakers`).then((players) => {
                 this._team.setPlayers(players);
+                this._team.players.forEach(player => player.setIsInDreamTeam(false));
             });
         });
     }
     get team() {
         return this._team;
+    }
+    get deramTeam() {
+        return this._dreamTeam;
+    }
+    addPlayerToDreanTeam(player) {
+        return __awaiter(this, void 0, void 0, function* () {
+            $.ajax({
+                url: "/player/dream/team",
+                type: "POST",
+                data: JSON.stringify(player),
+                success: function () {
+                    console.log("Player added successfully");
+                }
+            });
+        });
+    }
+    removePlayerfromDreanTeam(player) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("fdghjjjjjjjjjj");
+            console.log(player);
+            $.ajax({
+                url: "/player/dream/team",
+                type: "DELETE",
+                data: JSON.stringify(player),
+                success: function () {
+                    console.log("Player remove successfully");
+                }
+            });
+        });
+    }
+    featchDreamTeam() {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield $.get("/dream/team").then((players) => {
+                this._dreamTeam.setPlayers(players);
+                this._dreamTeam.players.forEach(player => player.setIsInDreamTeam(true));
+            });
+        });
     }
 }
