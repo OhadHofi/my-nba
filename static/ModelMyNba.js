@@ -12,24 +12,31 @@ class ModelMyNba {
     constructor() {
         this._team = new Team();
         this._dreamTeam = new Team();
+        this._statistics = [];
     }
     featchTeam(team, year) {
         return __awaiter(this, void 0, void 0, function* () {
             const checkbox = document.getElementById('dateOfBirthUtc');
             let url = `/players/${year}/${team}?filter_date_of_birth_utc=`;
             url = (checkbox === null || checkbox === void 0 ? void 0 : checkbox.checked) ? url + "true" : url + "false";
-            yield $.get(url).then((players) => {
-                // await $.get(`/players/2017/lakers`).then((players) => {
+            // await $.get(url).then((players)=>{
+            yield $.get(`/players/2015/lakers`).then((players) => {
                 this._team.setPlayers(players);
                 this._team.players.forEach(player => player.setIsInDreamTeam(false));
             });
         });
     }
-    get team() {
-        return this._team;
-    }
-    get deramTeam() {
-        return this._dreamTeam;
+    featchStatistic(firstName, lastName) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this._statistics = [];
+            yield $.get(`/player/statistic/${firstName}/${lastName}`).then((statistics) => {
+                for (let key in statistics) {
+                    this._statistics.push({ "statistic": `${key.replace("_", " ")}: ${statistics[key]}` });
+                }
+            }, (reason) => {
+                console.error(reason);
+            });
+        });
     }
     addPlayerToDreanTeam(player) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -45,8 +52,6 @@ class ModelMyNba {
     }
     removePlayerfromDreanTeam(player) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log("fdghjjjjjjjjjj");
-            console.log(player);
             $.ajax({
                 url: "/player/dream/team",
                 type: "DELETE",
@@ -64,5 +69,15 @@ class ModelMyNba {
                 this._dreamTeam.players.forEach(player => player.setIsInDreamTeam(true));
             });
         });
+    }
+    // TODO: Why should I keep all the information about it in the model? Why not display straight to the screen and that's it? And if so how do you do it because I return peomise
+    get team() {
+        return this._team;
+    }
+    get deramTeam() {
+        return this._dreamTeam;
+    }
+    get statistics() {
+        return this._statistics;
     }
 }

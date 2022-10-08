@@ -19,6 +19,23 @@ class Player{
         this.isInDreanTeam = flag
     }
 
+    getFirstName() : string{
+        return this.firstName
+    }
+
+    getLastName() : string{
+        return this.lastName
+    }
+
+    
+    // get irstName(): string {
+    //     return this.firstName;
+    // }
+
+    // get astName(): string {
+    //     return this.lastName;
+    // }
+
 
 
 

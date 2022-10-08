@@ -43,14 +43,19 @@
     <script id="players-template" type="text/x-handlebars-template">
       {{#each players}}
         <div class="col">
-          <div class="card h-100 text-center">
-            <h5 class="card-title first-name">{{firstName}}</h5><h5
-              class="card-title last-name"
-            >{{lastName}}</h5>
-            <h5 class="card-title shirt-number">{{jersey}}</h5>
-            <div>{{this}}</div>
-            <img src={{img}} class="card-img-top" alt="..." />
-            <h5 class="card-title pos">{{pos}}</h5>
+          <div class="card h-100">
+            <div class="text-center">
+              <h5 class="card-title first-name">{{firstName}}</h5><h5
+                class="card-title last-name"
+              >{{lastName}}</h5>
+              <h5 class="card-title shirt-number">{{jersey}}</h5>
+              <div>{{this}}</div>
+              <img src={{img}} class="card-img-top" alt="..." />
+              <h5 class="card-title pos">{{pos}}</h5>
+            </div>
+            <div class="statistic-container">
+
+            </div>
             {{#if isInDreanTeam}}
               <button
                 type="button"
@@ -65,6 +70,17 @@
           </div>
         </div>
       {{/each}}
+    </script>
+
+    <script id="statistic-template" type="text/x-handlebars-template">
+      <div class="card-header">
+        Statistic
+      </div>
+      <ul class="list-group list-group-flush text-right">
+        {{#each statistics}}
+          <li class="list-group-item">{{statistic}}</li>
+        {{/each}}
+      </ul>
     </script>
   </body>
 </html>

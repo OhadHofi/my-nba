@@ -20,7 +20,7 @@ async def filter_players(year, team_name, is_day_of_birth_utc):
     return players
 
 
-async def add_statistic(first_name, last_name):
+async def get_statistic(first_name, last_name):
     statistic = requests.get(
         f'https://nba-players.herokuapp.com/players-stats/{last_name}/{first_name}')
     statistic = statistic.json()

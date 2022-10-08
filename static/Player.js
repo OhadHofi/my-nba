@@ -11,4 +11,10 @@ class Player {
     setIsInDreamTeam(flag) {
         this.isInDreanTeam = flag;
     }
+    getFirstName() {
+        return this.firstName;
+    }
+    getLastName() {
+        return this.lastName;
+    }
 }
