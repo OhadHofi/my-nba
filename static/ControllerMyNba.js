@@ -34,6 +34,10 @@ $("body").on("click", ".col", function () {
         viewMyNba.renderStatistic(modelMyNba.statistics, statisticContainer[0]);
     });
 });
+$("body").on("mouseout", ".col", function () {
+    var statisticContainer = $(this).find(".statistic-container");
+    viewMyNba.removeStatistic(statisticContainer[0]);
+});
 // $("body").on("mouseover", ".col", function(){
 //     if(flag){
 //         const player:Player = getPlayerDetails(this)

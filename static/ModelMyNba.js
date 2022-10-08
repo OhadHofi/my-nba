@@ -28,13 +28,14 @@ class ModelMyNba {
     }
     featchStatistic(firstName, lastName) {
         return __awaiter(this, void 0, void 0, function* () {
-            this._statistics = [];
             yield $.get(`/player/statistic/${firstName}/${lastName}`).then((statistics) => {
+                this._statistics = [];
                 for (let key in statistics) {
-                    this._statistics.push({ "statistic": `${key.replace("_", " ")}: ${statistics[key]}` });
+                    this._statistics.push(new Statistic(key.replace("_", " "), statistics[key]));
+                    // this._statistics.push({"statistic" : `${key.replace("_"," ")}: ${statistics[key]}`})
                 }
             }, (reason) => {
-                console.error(reason);
+                this._statistics = [];
             });
         });
     }

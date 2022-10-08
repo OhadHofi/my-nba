@@ -11,7 +11,7 @@ class Player{
         this.lastName = lastName
         this.jersey = jersey
         this.pos = pos
-        this.img = `"https://nba-players.herokuapp.com/players/${lastName}/${firstName}"`
+        this.img = `https://nba-players.herokuapp.com/players/${lastName}/${firstName}`
         this.isInDreanTeam = false
     }
 

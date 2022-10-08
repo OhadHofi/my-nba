@@ -1,0 +1,16 @@
+body{
+    background-image: url('https://thumbs.dreamstime.com/b/basketball-ball-isolated-dark-background-blue-neon-banner-horizontal-sport-theme-poster-greeting-cards-headers-website-237686217.jpg');
+}
+
+.center {
+    margin: 10px;
+    text-align: center;
+    color: white;
+}
+
+.card{
+    background-image: url('https://img.freepik.com/premium-vector/basketball-black-background_112639-16.jpg?w=2000');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+}

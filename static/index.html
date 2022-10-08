@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap demo</title>
+    <title>My NBA</title>
+    <link rel="stylesheet" href="static/style.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -12,17 +13,18 @@
     />
   </head>
   <body>
-    <input type="text" id="team_name" placeholder="TEAM NAME" />
-    <input type="number" id="year" placeholder="YEAR" />
-    <label> filter by date of birth utc</label>
-    <input type="checkbox" id="dateOfBirthUtc" />
-    <button id="get_team_button" class="btn btn-primary" type="submit">
-      GET TEAM
-    </button>
-    <button id="get_dream_team_button" class="btn btn-primary" type="submit">
-      Get Dream Team
-    </button>
-
+    <div class="center">
+      <input type="text" id="team_name" placeholder="TEAM NAME" />
+      <input type="number" id="year" placeholder="YEAR" />
+      <input type="checkbox" id="dateOfBirthUtc" />
+      <label> filter by date of birth utc</label>
+      <button id="get_team_button" class="btn btn-primary" type="submit">
+        GET TEAM
+      </button>
+      <button id="get_dream_team_button" class="btn btn-primary" type="submit">
+        Get Dream Team
+      </button>
+    </div>
     <div id="player-container" class="row row-cols-1 row-cols-md-3 g-4"></div>
 
     <script
@@ -37,6 +39,7 @@
     <script src="static/ViewMyNba.js"></script>
     <script src="static/Player.js"></script>
     <script src="static/Team.js"></script>
+    <script src="static/Statistic.js"></script>
     <script src="static/ModelMyNba.js"></script>
     <script src="static/ControllerMyNba.js"></script>
 
@@ -49,8 +52,14 @@
                 class="card-title last-name"
               >{{lastName}}</h5>
               <h5 class="card-title shirt-number">{{jersey}}</h5>
-              <div>{{this}}</div>
-              <img src={{img}} class="card-img-top" alt="..." />
+              <img
+                src={{img}}
+                onerror="this.src='https://phantom-marca.unidadeditorial.es/ee46d7a1c09b447117f8e83c6e131f31/resize/1320/f/jpg/assets/multimedia/imagenes/2022/02/02/16437899001758.jpg'"
+                width="250"
+                height="200"
+                class="card-img-top"
+                alt="..."
+              />
               <h5 class="card-title pos">{{pos}}</h5>
             </div>
             <div class="statistic-container">

@@ -41,7 +41,10 @@ $("body").on("click", ".col", function(){
 })
 
 
-
+$("body").on("mouseout", ".col", function(){
+    var statisticContainer = $(this).find(".statistic-container")
+    viewMyNba.removeStatistic(statisticContainer[0])
+})
 
 // $("body").on("mouseover", ".col", function(){
 //     if(flag){

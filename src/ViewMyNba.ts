@@ -17,7 +17,7 @@ class ViewMyNba{
         $(statisticContainer).append(templateStatistic({statistics}))
     }
 
-    removeStatistic(statisticContainer: HTMLElement){
+    removeStatistic(statisticContainer: any){
         $(statisticContainer).empty()
     }
 }

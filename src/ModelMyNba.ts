@@ -1,7 +1,7 @@
 class ModelMyNba{
     private _team : Team
     private _dreamTeam : Team
-    private _statistics : {}[]
+    private _statistics : Statistic[]
 
     constructor(){
         this._team = new Team()
@@ -21,15 +21,16 @@ class ModelMyNba{
     }
 
     async featchStatistic(firstName:string, lastName:string){
-        this._statistics = []
         await $.get(`/player/statistic/${firstName}/${lastName}`).then(
         (statistics)=>{
+            this._statistics = []
             for (let key in statistics) {
-                this._statistics.push({"statistic" : `${key.replace("_"," ")}: ${statistics[key]}`})
+                this._statistics.push(new Statistic(key.replace("_"," "), statistics[key]))
+                // this._statistics.push({"statistic" : `${key.replace("_"," ")}: ${statistics[key]}`})
             }
         },
         (reason)=>{
-            console.error(reason)
+            this._statistics = []
         }
         )
     }
